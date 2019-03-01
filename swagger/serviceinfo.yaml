@@ -4,7 +4,7 @@ info:
   version: version
   title: Service Info REST API
 host: whatever.you.like
-basePath: /
+basePath: /api/snapshot
 tags:
   - name: ServiceInfo
 schemes:
