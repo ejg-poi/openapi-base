@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  description: This is the Service Info Swagger Rest Documentation
+  version: version
+  title: Service Info REST API
+tags:
+  - name: ServiceInfo
+paths:
+  /service-info:
+    get:
+      tags:
+        - ServiceInfo
+      summary: Get servie info of a module
+      operationId: getServiceInfo
+      responses:
+        "200":
+          description: successful operation
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/ServiceInfoType"
+security:
+  - Country:
+      []
+  - Dealer-Number:
+      []
+  - Brand:
+      []
+servers:
+  - url: https://whatever.you.like/api/snapshot
+components:
+  securitySchemes:
+    Country:
+      type: apiKey
+      name: Country
+      in: header
+    Dealer-Number:
+      type: apiKey
+      name: Dealer-Number
+      in: header
+    Brand:
+      type: apiKey
+      name: Brand
+      in: header
+  schemas:
+    ServiceInfoType:
+      type: object
+      description: Service info object
+      properties:
+        name:
+          type: string
+          description: Name of service
+        status:
+          type: string
+          description: Status of service
+        system:
+          type: string
+          description: Providing system
+        versions:
+          type: array
+          items:
+            $ref: "#/components/schemas/VersionType"
+    VersionType:
+      type: object
+      description: Version of Service
+      properties:
+        version:
+          type: number
+          description: Version number
+        format:
+          type: string
+          description: Provided data fromat (JSON, XML, ...)
