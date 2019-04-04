@@ -1,0 +1,29 @@
+swagger: '2.0'
+info:
+  title: Common data types
+  version: 0.0.1
+tags:
+  - name: Common Types
+definitions:
+  ContactType:
+    type: object
+    description: Representing a contact type
+    properties:
+      type:
+        type: string
+        enum: [PHONE, EMAIL]
+        description: The type of the contact
+        example: 'PHONE'
+      value:
+        type: string
+        description: The value of the contact type
+        example: '+43 664 55 664 779'
+      info:
+        type: string
+        description: additional info for the contact type
+        example: 'Available from 6 o'clock PM'
+  ProcessType:
+    type: string
+    enum: [DEFAULT, TIRECHANGE]
+    description: The process type representing the according workflow
+    example: 'TIRECHANGE'
